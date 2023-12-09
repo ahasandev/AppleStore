@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppleStore" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/white</item>
+
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.AppleStore" parent="Base.Theme.AppleStore" />
+</resources>
