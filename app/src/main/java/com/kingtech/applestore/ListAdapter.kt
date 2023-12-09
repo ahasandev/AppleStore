@@ -1,19 +1,16 @@
 package com.kingtech.applestore
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kingtech.applestore.data.ResponseProducts
 import com.kingtech.applestore.databinding.ItemBinding
 
-class ListAdapter(var itemlist :List<ResponseProducts.Product>) : RecyclerView.Adapter<ListAdapter.Itemviewholder>() {
+class ListAdapter(private var itemlist :List<ResponseProducts.Product>) : RecyclerView.Adapter<ListAdapter.Itemviewholder>() {
 
     class Itemviewholder(var binding: ItemBinding) : RecyclerView.ViewHolder(binding.root)
 
