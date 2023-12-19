@@ -1,9 +1,9 @@
 package com.kingtech.applestore
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import coil.load
 import com.kingtech.applestore.databinding.FragmentProductDetailsBinding
 
 class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(FragmentProductDetailsBinding::inflate) {
@@ -13,20 +13,27 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(Fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       val id= requireArguments().getInt("itemId").toString()
-       val name= requireArguments().getString("name")
-       val image= requireArguments().getString("image")
-       val discount= requireArguments().getInt("discount").toString()
-       val price= requireArguments().getInt("price").toString()
-       val discription= requireArguments().getInt("discription").toString()
-       val stock= requireArguments().getInt("stock").toString()
+       val id= requireArguments().getInt("itemId")
+        viewModel.getProduct(id)
+        setProductObserver()
 
-        binding.apply {
-            pdtitle.text = name
-            pddiscount.text = discount
-            pdprice.text = price
-            productimg.load(image)
+
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setProductObserver(){
+        viewModel.productResponse.observe(viewLifecycleOwner){ product ->
+
+            binding.apply {
+                pdprice.text = "$${product.price}"
+                pdtitle.text = product.title
+                pddiscount.text ="${product.discountPercentage}"
+                pddiscribtion.text =product.description
+            }
+
         }
+
     }
 
 

@@ -3,17 +3,6 @@ package com.kingtech.applestore.data
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-@Keep
-data class ResponseProducts(
-    @SerializedName("limit")
-    val limit: Int? = null,
-    @SerializedName("products")
-    val products: List<Product?>? = null,
-    @SerializedName("skip")
-    val skip: Int? = null,
-    @SerializedName("total")
-    val total: Int? = null
-) {
     @Keep
     data class Product(
         @SerializedName("brand")
@@ -39,4 +28,3 @@ data class ResponseProducts(
         @SerializedName("title")
         val title: String? = null
     )
-}

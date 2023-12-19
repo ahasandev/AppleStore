@@ -4,4 +4,4 @@ const val BASE_URL = "https://dummyjson.com/"
 
 const val PRODUCTS = "products"
 
-const val ID = BASE_URL+ PRODUCTS+"/"
+const val PRODUCT="products/{id}"
