@@ -2,8 +2,10 @@ package com.kingtech.applestore
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import coil.load
 import com.kingtech.applestore.databinding.FragmentProductDetailsBinding
 
 class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(FragmentProductDetailsBinding::inflate) {
@@ -14,6 +16,7 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(Fragm
         super.onViewCreated(view, savedInstanceState)
 
        val id= requireArguments().getInt("itemId")
+        Log.d("TAG", id.toString())
         viewModel.getProduct(id)
         setProductObserver()
 
@@ -25,18 +28,29 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(Fragm
     private fun setProductObserver(){
         viewModel.productResponse.observe(viewLifecycleOwner){ product ->
 
+            Log.d("T", product.toString())
+
             binding.apply {
                 pdprice.text = "$${product.price}"
                 pdtitle.text = product.title
                 pddiscount.text ="${product.discountPercentage}"
                 pddiscribtion.text =product.description
+                pdImage.load(product.thumbnail)
+                setImgSilder(product.images)
+                Log.d("TAGG", product.images.toString())
+
             }
 
         }
 
     }
 
+    private fun setImgSilder(images: List<String>?) {
+        if (!images.isNullOrEmpty()){
+//            binding.productimg.adapter = StoreSliderAdapter(images)
+        }
 
+    }
 
 
 }

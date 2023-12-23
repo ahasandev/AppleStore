@@ -5,12 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kingtech.applestore.data.Product
+import com.kingtech.applestore.data.ResponseProducts
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    private val _allProductResponse = MutableLiveData<Product>()
-    val allProductResponse: LiveData<Product> = _allProductResponse
+    private val _allProductResponse = MutableLiveData<ResponseProducts>()
+    val allProductResponse: LiveData<ResponseProducts> = _allProductResponse
 
 
     fun getAllProduct() {
@@ -31,7 +32,7 @@ class MainViewModel : ViewModel() {
 
         viewModelScope.launch {
             val data = RetrofitClient.getApiDAO().getProduct(pid).body()
-            _productResponse.postValue(data!!)
+           _productResponse.postValue(data!!)
 
         }
 
