@@ -35,6 +35,7 @@ class ListAdapter(private var itemlist :List<Product>?) : RecyclerView.Adapter<L
                     Bundle().apply {
                         putInt("itemId", product?.id!!)
 
+
                     }
                 )
             }
